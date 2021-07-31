@@ -29,40 +29,35 @@ Você deve criar um banco de dados novo (database) e uma coleção com um nome p
 ```
 _________________
 _Atualizar documento: 
+
 ˋˋˋ
 db.getCollection('Agents').update(
-    // query 
+     
     {
         "Agent.name" : "Sage"
     },
     {
-    // update 
+    
         $set: { "Agent.Role" : "Sentinel"
         }
     },
     
-    // options 
+    
     {
-        "multi" : true,  // update only one document 
-         // insert a new document, if no existing document match the query 
+        "multi" : true,  
+        
     }
 );
 ˋˋˋ
 
 _Exclusão de documentos_:
+
 ˋˋˋ
 db.getCollection('Agents').remove({ 'Agent.Role' : 'DUELIST' });
 ˋˋˋ
 
-_Consulta com projeção_
-
-````
-db.getCollection('Agents').find({'others.Skills' : {$elemMatch:{'others.Skills': [0]}}})
-
-````
-não funciona
-
 _Consulta utilizando combinação entre seletores_
+
 ```
 db.Agents.find({'Agent.name':{$ne:'brimstone'}})
 
